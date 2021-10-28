@@ -195,7 +195,6 @@ void procurar_menor_pos_apos(std::vector<int> vet){ //qual a posição do menor 
     }
 }
 
-
 void procurar_melhor_se(std::vector<int> vet){ //qual a posição do HOMEM mais calmo? (menor valor maior que 0)
     int tam = vet.size();
     int menor = 999;
@@ -222,7 +221,6 @@ void calcular_stress_medio(std::vector<int> vet){ //qual a média de stress da f
 
     std::cout<<"A media de stress e "<<media;  
 }
-
 
 void mais_homens_ou_mulheres(std::vector<int> vet){ //Na fila existem mais homens ou mulheres?
     int tam = vet.size();
