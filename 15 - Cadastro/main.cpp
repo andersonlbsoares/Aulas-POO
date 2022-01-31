@@ -85,12 +85,15 @@ class checkingAccount : public Account {
         checkingAccount(float balance, std::string clientId, int id, std::string type) : Account(balance, clientId, id, type) {
         }
         void monthlyUpdate() override {
+            std::stringstream ss;
             if(this->balance-5 < 0){
                 this->balance = 0;
-                throw std::runtime_error(clientId +" sua conta " +  std::to_string(id) + "(" + type + ")"+ " foi bloqueada por falta de saldo, deposite algum valor para desbloquear");
+                
+                 throw std::runtime_error(clientId +" sua conta " +  std::to_string(id) + "(" + type + ")"+ " foi bloqueada por falta de saldo, deposite algum valor para desbloquear\n");
             } else {
                 this->balance = this->balance - 5;
             }
+            
         }
 };
 
@@ -242,8 +245,10 @@ int main(){
         std::string input;
         std::cin >> input;
         try{
-
-            if(input == "exit"){
+            if(input == "update"){
+                agency.monthlyUpdate();
+            }
+            else if(input == "exit"){
                 break;
             }else if(input == "addCli"){
                 std::string id;
@@ -256,8 +261,6 @@ int main(){
                 agency.deposit(accountId, amount);
             }else if(input == "show"){
                 std::cout << agency << std::endl;
-            }else if(input == "update"){
-                agency.monthlyUpdate();
             }else if(input == "saque"){
                 int accountId;
                 float amount;
@@ -275,6 +278,7 @@ int main(){
         } catch (std::runtime_error &e){
             std::cout << e.what() << std::endl;
         }
+
     }
 
 
